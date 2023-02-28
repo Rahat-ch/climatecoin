@@ -3,7 +3,7 @@ import { ethers } from "hardhat";
 async function main() {
   const initialSupply = 1000;
   const contract = await ethers.getContractFactory("ClimateCoin");
-  const climateCoin = await contract.deploy(initialSupply);
+  const climateCoin = await contract.deploy(initialSupply, "0x69015912AA33720b842dCD6aC059Ed623F28d9f7");
 
   await climateCoin.deployed();
 

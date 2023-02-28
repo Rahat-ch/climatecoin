@@ -1,3 +1,7 @@
+# Info
+
+This is a fork of the original ClimateCoin contract which makes the contract compliant with the EIP2771 approach for gasless transactions. This was done as part of a workshop during Eth Denver 2023. Check out the frontend repository for this contract [here](https://github.com/Rahat-ch/zerotodapp_gasless_workshop)
+
 # ClimateCoin
 
 This is a Climate-focused project designed to rewards citizens with climate coin with carbon credits for climate change mitigation efforts. The goal is reduce the friction in Digital Monitorting, Review and Verification (D-MRV) by adding a registry for carbon credits and enabling on-chain rewards. This project seeks to demonstrate how D-MRV systems can be used to underpin future carbon markets under the goals
@@ -47,13 +51,15 @@ npx hardhat node
 npx hardhat run scripts/deploy.ts --network mumbai
 ```
 
-My climatecoin contract: https://mumbai.polygonscan.com/address/0xb99460c473f65F8d84297A2Fa3262003283A5100
+My climatecoin contract: https://mumbai.polygonscan.com/address/0x61c023fbd475a2a46aba79b5f72c83239bda2fd2
 
 
 Update the command to use your contract address, then verify your contract
 
+Note: We are supplying the Trusted Forwarder Contract address as the second argument for verification. 
+
 ```shell
-npx hardhat verify --network mumbai <your-contract-address> 1000
+npx hardhat verify --network mumbai <your-contract-address> 1000 0x69015912AA33720b842dCD6aC059Ed623F28d9f7
 ```
 
-The result is your verified source code. Here's mine: https://mumbai.polygonscan.com/address/0xb99460c473f65F8d84297A2Fa3262003283A5100#code
+The result is your verified source code. Here's mine: https://mumbai.polygonscan.com/address/0x61c023fbd475a2a46aba79b5f72c83239bda2fd2#code
