@@ -11,6 +11,7 @@ contract ClimateCoin is ERC20, ERC2771Context  {
     mapping(address => uint256) public acreage;
     mapping(address => bool) public claims;
     mapping(address => uint256) public rewards;
+    mapping(address => bool) farmerWaitlist;
 
     event NewClaim(address indexed claimant);
     event ClaimApproved(address indexed farmer);
@@ -51,10 +52,17 @@ contract ClimateCoin is ERC20, ERC2771Context  {
         emit Rewarded(_msgSender());
     }
 
-    function registerFarmer(address _farmer, uint256 _acerage)
+    function registerFarmer(address _farmer)
+        public
+    {
+        farmerWaitlist[_farmer] = true;
+    }
+
+    function approveFarmer(address _farmer, uint256 _acerage)
         public
         onlyAdmins
     {
+        farmerWaitlist[_farmer] = false;
         isAFarmer[_farmer] = true;
         acreage[_farmer] = _acerage;
         emit NewFarmer(_farmer);
